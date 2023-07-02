@@ -26,4 +26,80 @@
     Calcule e mostre o valor total do investimento após o terceiro ano. Pergunte ao usuário se ele deseja saber quanto foi pago de imposto no decorrer do tempo em que manteve o investimento. Caso o usuário responda positivamente, mostre o valor total pago de imposto. Pergunte, também, se o usuário deseja saber o percentual pago de imposto e apresente este valor. Caso o usuário responda positivamente, mostre o percentual pago de imposto. Faça uma relação sobre o imposto pago e o rendimento obtido e aponte se o investimento foi vantajoso ou não e qual a diferença entre os dois.
 
     */
+
+   let dinheiroColchao = Number(prompt(`Informe o valor que dinheiro que você tem embaixo do colchão:`).trim().replace(",","."));
+   let investimento = prompt(`Informe o tipo de investimento finaceiro, Poupança, Renda Fixa, Fundos Imobiliários, Ações:`).trim().toLowerCase();
+   let verificacao1 = 'incompleta';
+   if(investimento === 'poupança' || investimento === 'renda fixa' || investimento === 'fundos imobiliários' || investimento === 'ações'){
+     verificacao1 = 'completa';
+   }
+   else{
+       investimento = prompt(`Informe o tipo de investimento finaceiro, Poupança, Renda Fixa, Fundos Imobiliários, Ações:`).trim().toLowerCase();
+       if(investimento === 'poupança' || investimento === 'renda fixa' || investimento === 'fundos imobiliários' || investimento === 'ações'){
+           verificacao1 = 'completa';
+       }
+       else{
+           investimento = prompt(`Informe o tipo de investimento finaceiro, Poupança, Renda Fixa, Fundos Imobiliários, Ações:`).trim().toLowerCase();
+           if(investimento === 'poupança' || investimento === 'renda fixa' || investimento === 'fundos imobiliários' || investimento === 'ações'){
+               verificacao1 = 'completa';
+           }
+           else{
+               window.stop();
+           }
+       }
+   }
+   if(verificacao1 === 'completa'){
+      if(investimento === 'poupança'){
+           alert(`Após um ano você terá de dinheiro R$ ${(dinheiroColchao * 1.03).toFixed(2).replace(".",",")}.`);
+       }
+       else if(investimento === 'renda fixa'){
+           alert(`Após um ano você terá de dinheiro R$ $ ${(dinheiroColchao * 1.05).toFixed(2).replace(".",",")}.`);
+       }
+       else if(investimento === 'fundos imobiliários'){
+           alert(`Após um ano você terá de dinheiro R$ ${(dinheiroColchao * 1.07).toFixed(2).replace(".",",")}.`);
+       }
+       else{
+           alert(`Após um ano você terá de dinheiro R$ ${(dinheiroColchao * 1.10).toFixed(2).replace(".",",")}.`);
+       }
+   }
+   let quantia=''
+   let verificacao2 = 'incompleta'
+   let quantiaSacar = prompt('Deseja sacar alguma quantia investida durante o ano? ').trim().toLowerCase();
+   if(quantiaSacar === 'sim'){
+    quantia = Number(prompt('Qual a quantia que deseja sacar?').trim().replace(".",","));
+   }
+   else{
+       alert('nzjkh');
+   }
+   let sacar = prompt('Insira o tipo de investimento');
+   if(sacar === 'poupança' || sacar === 'renda fixa'){
+       verificacao2 = 'completa';
+   }
+   else{
+       sacar = prompt('Insira novamente o tipo de investimento:');
+       if(sacar === 'poupança' || sacar === 'renda fixa'){
+           verificacao2 = 'completa';
+       }
+       else{
+           sacar = prompt('Insira novamente o tipo de investimento:');
+           if(sacar === 'poupança' || sacar === 'renda fixa'){
+           verificacao2 = 'completa';
+       }
+           else{
+               window.stop();
+           }
+       }
+   }
+   if(verificacao2 === 'completa'){
+       if(sacar === 'poupança' || sacar === 'renda fixa'){
+      
+           alert(` Após um ano você terá de dinheiro R$ ${(dinheiroColchao-quantia).toFixed(2).replace(".",",")}. `);
+       }
+   }
+  
+
+
+
+
+
 </script>
