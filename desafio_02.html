@@ -68,9 +68,7 @@
    if(quantiaSacar === 'sim'){
     quantia = Number(prompt('Qual a quantia que deseja sacar?').trim().replace(".",","));
    }
-   else{
-       alert('nzjkh');
-   }
+   
    let sacar = prompt('Insira o tipo de investimento');
    if(sacar === 'poupança' || sacar === 'renda fixa'){
        verificacao2 = 'completa';
@@ -90,12 +88,45 @@
            }
        }
    }
-   if(verificacao2 === 'completa'){
-       if(sacar === 'poupança' || sacar === 'renda fixa'){
-      
-           alert(` Após um ano você terá de dinheiro R$ ${(dinheiroColchao-quantia).toFixed(2).replace(".",",")}. `);
-       }
-   }
+     if (verificacao2 === 'completa') {
+            if (sacar === 'poupança') {
+
+                alert(` Após um ano você terá de dinheiro R$ ${((dinheiroColchao * 1.03) - quantia).toFixed(2).replace(".", ",")}. `);
+            }
+            else if (sacar === 'renda fixa') {
+                alert(` Após um ano você terá de dinheiro R$ ${((dinheiroColchao * 1.05) - quantia).toFixed(2).replace(".", ",")}. `);
+            }
+        }
+
+    }
+
+    let imposto = prompt('Deseja que o programa simule o valor a ser pago de imposto e reduza este valor do valor total do investimento após um ano? DIGITE SIM OU NÃO: ').trim().toLowerCase();
+
+    if (imposto === 'sim') {
+        let percentual = Number(prompt('Qual o percentual de imposto a ser pago sobre o lucro obtido?').trim().replace(',', '.'));
+        if (percentual < 100 || percentual > 0) {
+            verificacao3 = 'completa';
+        }
+        else {
+            percentual = Number(prompt('Qual o percentual de imposto a ser pago sobre o lucro obtido?').trim().replace(',', '.'));
+            if (percentual < 100 || percentual > 0) {
+                verificacao3 = 'completa';
+            }
+            else {
+                percentual = Number(prompt('Qual o percentual de imposto a ser pago sobre o lucro obtido?').trim().replace(',', '.'));
+                if (percentual < 100 || percentual > 0) {
+                    verificacao3 = 'completa';
+                }
+                else{
+                    window.stop();
+                }
+            }
+        }
+    }
+
+    if(verificacao3 === 'completa'){
+        alert('dkgjzd');
+    }
   
 
 
