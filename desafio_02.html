@@ -48,18 +48,23 @@
            }
        }
    }
+   let dinheiro
    if(verificacao1 === 'completa'){
       if(investimento === 'poupança'){
-           alert(`Após um ano você terá de dinheiro R$ ${(dinheiroColchao * 1.03).toFixed(2).replace(".",",")}.`);
+           dinheiro = dinheiroColchao * 1.03;
+           alert(`Após um ano você terá de dinheiro R$ ${dinheiro.toFixed(2).replace(".",",")}.`);
        }
        else if(investimento === 'renda fixa'){
-           alert(`Após um ano você terá de dinheiro R$ $ ${(dinheiroColchao * 1.05).toFixed(2).replace(".",",")}.`);
+             dinheiro = dinheiroColchao * 1.05;
+           alert(`Após um ano você terá de dinheiro R$ $ ${dinheiro.toFixed(2).replace(".",",")}.`);
        }
        else if(investimento === 'fundos imobiliários'){
-           alert(`Após um ano você terá de dinheiro R$ ${(dinheiroColchao * 1.07).toFixed(2).replace(".",",")}.`);
+            dinheiro = dinheiroColchao * 1.07;
+           alert(`Após um ano você terá de dinheiro R$ ${dinheiro.toFixed(2).replace(".",",")}.`);
        }
        else{
-           alert(`Após um ano você terá de dinheiro R$ ${(dinheiroColchao * 1.10).toFixed(2).replace(".",",")}.`);
+            dinheiro = dinheiroColchao * 1.10;
+           alert(`Após um ano você terá de dinheiro R$ ${dinheiro.toFixed(2).replace(".",",")}.`);
        }
    }
    let quantia=''
@@ -67,9 +72,8 @@
    let quantiaSacar = prompt('Deseja sacar alguma quantia investida durante o ano? ').trim().toLowerCase();
    if(quantiaSacar === 'sim'){
     quantia = Number(prompt('Qual a quantia que deseja sacar?').trim().replace(".",","));
-   }
-   
-   let sacar = prompt('Insira o tipo de investimento');
+
+    let sacar = prompt('Insira o tipo de investimento');
    if(sacar === 'poupança' || sacar === 'renda fixa'){
        verificacao2 = 'completa';
    }
@@ -91,30 +95,31 @@
      if (verificacao2 === 'completa') {
             if (sacar === 'poupança') {
 
-                alert(` Após um ano você terá de dinheiro R$ ${((dinheiroColchao * 1.03) - quantia).toFixed(2).replace(".", ",")}. `);
+                alert(` Após um ano você terá de dinheiro R$ ${(dinheiro - quantia).toFixed(2).replace(".", ",")}. `);
             }
             else if (sacar === 'renda fixa') {
-                alert(` Após um ano você terá de dinheiro R$ ${((dinheiroColchao * 1.05) - quantia).toFixed(2).replace(".", ",")}. `);
+                alert(` Após um ano você terá de dinheiro R$ ${(dinheiro - quantia).toFixed(2).replace(".", ",")}. `);
             }
         }
 
-    }
+   }
 
     let imposto = prompt('Deseja que o programa simule o valor a ser pago de imposto e reduza este valor do valor total do investimento após um ano? DIGITE SIM OU NÃO: ').trim().toLowerCase();
-
+    
+    let percentual
     if (imposto === 'sim') {
-        let percentual = Number(prompt('Qual o percentual de imposto a ser pago sobre o lucro obtido?').trim().replace(',', '.'));
+        percentual = Number(prompt('Qual o percentual de imposto a ser pago sobre o lucro obtido? Responda somente o número').trim().replace(',', '.'));
         if (percentual < 100 || percentual > 0) {
             verificacao3 = 'completa';
         }
         else {
-            percentual = Number(prompt('Qual o percentual de imposto a ser pago sobre o lucro obtido?').trim().replace(',', '.'));
+            percentual = Number(prompt('Qual o percentual de imposto a ser pago sobre o lucro obtido? Responda somente o número').trim().replace(',', '.'));
             if (percentual < 100 || percentual > 0) {
                 verificacao3 = 'completa';
             }
             else {
-                percentual = Number(prompt('Qual o percentual de imposto a ser pago sobre o lucro obtido?').trim().replace(',', '.'));
-                if (percentual < 100 || percentual > 0) {
+                percentual = Number(prompt('Qual o percentual de imposto a ser pago sobre o lucro obtido? Responda somente o número').trim().replace(',', '.'));
+                 if (percentual < 100 || percentual > 0) {
                     verificacao3 = 'completa';
                 }
                 else{
@@ -123,9 +128,20 @@
             }
         }
     }
-
+    else{
+        alert(`Valor total do investimento após um ano: R$${dinheiro.toFixed(2).replace('.',',')}`);
+    }
+    
     if(verificacao3 === 'completa'){
-        alert('dkgjzd');
+        const lucro = dinheiro * percentual /100;
+        dinheiro = dinheiro - lucro;
+       alert(`Valor a ser pago de imposto: R$${lucro.toFixed(2).replace('.',',')}.\nValor total do investimento após um ano: R$${dinheiro.toFixed(2).replace('.',',')}.`);    
+    }
+   
+    let segundoAno = prompt('Ao início do segundo ano deseja adicionar mais alguma quantia ao investimento que realizou? RESPONDA SIM OU NÃO!').trim().toLowerCase();
+    let investimento2 
+    if(segundoAno === 'sim'){
+        //(investimentofinal do primeiro ano + valor investido) * rendimento anual / (103 + 10) * 1.03 (<-- poupanca) == investimento anual do segundo ano
     }
   
 
